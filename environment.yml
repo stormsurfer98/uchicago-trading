@@ -1,0 +1,4 @@
+name: put_your_team_name_here
+dependencies:
+  - numpy
+  - scipy
