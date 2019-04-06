@@ -9,5 +9,5 @@ dependencies:
   - nltk
   - pip
   - pip:
-    - statsmodel
+    - statsmodels
     - cvxopt
