@@ -226,10 +226,6 @@ class Strategy():
         for i in range(680):
             expected_ret.append(np.dot(self.models[i], factors[i]))
 
-        print("----------------------------------------")
-        print(expected_ret)
-        print("----------------------------------------")
-
         # update weights
         weights = get_weights(expected_ret, self.returns)
         return weights.flatten()
