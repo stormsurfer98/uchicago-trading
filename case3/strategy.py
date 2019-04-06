@@ -25,7 +25,7 @@ def view_data(data_path):
     return prices, features
 
 
-# WEIGHT CHOOSING
+# WEIGHT PICKING
 
 def rolling_vol(prices, index):
     eq_price = pd.DataFrame(data = prices[:, index])
@@ -64,29 +64,32 @@ def optimal_portfolio(returns, expected_ret, pred_vol):
     np.fill_diagonal(a, 0)
 
     mod_cov = a + np.diag(pred_vol)
-    # Convert to cvxopt matrices
+
+    # convert to cvxopt matrices
     S = opt.matrix(mod_cov)
     pbar = opt.matrix(expected_ret)
 
-
-    # Create constraint matrices
-    G = -opt.matrix(np.eye(n))   # negative n x n identity matrix
+    # create constraint matrices
+    G = -opt.matrix(np.eye(n))
     h = opt.matrix(0.0, (n ,1))
     A = opt.matrix(1.0, (1, n))
     b = opt.matrix(1.0)
 
-    # Calculate efficient frontier weights using quadratic programming
+    # calculate efficient frontier weights using quadratic programming
     portfolios = [solvers.qp(mu*S, -pbar, G, h, A, b)['x']
                   for mu in mus]
-    ## CALCULATE RISKS AND RETURNS FOR FRONTIER
+
+    # calculate frontier
     returns = [blas.dot(pbar, x) for x in portfolios]
     risks = [np.sqrt(blas.dot(x, S*x)) for x in portfolios]
-    ## CALCULATE THE 2ND DEGREE POLYNOMIAL OF THE FRONTIER CURVE
-    m1 = np.polyfit(returns, risks, 2)
-    x1 = np.sqrt(m1[2] / m1[0])
-    # CALCULATE THE OPTIMAL PORTFOLIO
-    wt = solvers.qp(opt.matrix(x1 * S), -pbar, G, h, A, b)['x']
-    return np.asarray(wt), returns, risks
+
+    risk_ret = [] 
+    for i in range(len(returns)): 
+        risk_ret.append(returns[i]/risks[i])
+        ind = risk_ret.index(max(risk_ret))
+    wt = np.array(portfolios[ind])
+
+    return wt, returns, risks
 
 
 def get_weights(expected_ret, y):
@@ -203,11 +206,11 @@ class Strategy():
 
     def handle_update(self, inx, price, factors):
         """
-        Args:
+        args:
             inx: zero-based index in days
             price: [num_assets]
             factors: [num_assets, num_factors]
-        Return:
+        return:
             allocation: [num_assets]
         """
 
