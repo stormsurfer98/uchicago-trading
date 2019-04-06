@@ -1,4 +1,13 @@
-name: put_your_team_name_here
+name: duke
 dependencies:
   - numpy
   - scipy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - tensorflow
+  - nltk
+  - pip
+  - pip:
+    - statsmodel
+    - cvxopt
