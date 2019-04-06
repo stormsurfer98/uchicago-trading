@@ -190,12 +190,12 @@ def test_Bayesian_models(models, x, y):
 
 class Strategy():
     def __init__(self):
-        data = load_object("data/C3_train.pkl")
+        data = load_object("C3_train.pkl")
         data_prices = data['prices']
         data_features = data['features']['values']
 
         self.factors = np.array([[[data_features[j][k][i] for i in range(10)] for j in range(756)] for k in range(680)])
-        self.prices = np.array([data[prices[i][j] for i in range(757)] for j in range(680)])
+        self.prices = np.array([[data_prices[i][j] for i in range(757)] for j in range(680)])
         self.returns = np.array([[(data_prices[i][j]-data_prices[i-1][j])/data_prices[i-1][j] for i in range(1, 757)] for j in range(680)])
 
         with open('bayesian_weights.pkl', 'rb') as f:
@@ -213,9 +213,9 @@ class Strategy():
 
         # update data
         for i in range(680):
-            self.factors[i].append(factors[i])
-            self.prices[i].append(price[i])
-            self.returns[i].append((self.prices[i][-1]-self.prices[i][-2])/self.prices[i][-2])
+            np.append(self.factors[i], [factors[i]], axis=0)
+            np.append(self.prices[i], price[i])
+            np.append(self.returns[i], (self.prices[i][-1]-self.prices[i][-2])/self.prices[i][-2])
 
         # update model
         if inx % 21 == 0 and inx != 0:
@@ -226,6 +226,10 @@ class Strategy():
         for i in range(680):
             expected_ret.append(np.dot(self.models[i], factors[i]))
 
+        print("----------------------------------------")
+        print(expected_ret)
+        print("----------------------------------------")
+
         # update weights
         weights = get_weights(expected_ret, self.returns)
-        return weights
+        return weights.flatten()
