@@ -221,7 +221,7 @@ class Strategy():
             np.append(self.returns[i], (self.prices[i][-1]-self.prices[i][-2])/self.prices[i][-2])
 
         # update model
-        if inx % 21 == 0 and inx != 0:
+        if False and inx % 21 == 0 and inx != 0:
             self.models = train_Bayesian_models(self.factors, self.returns)
 
         # predict returns
