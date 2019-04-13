@@ -1,0 +1,40 @@
+{
+  "assets": [
+    {
+      "asset_code": "K",
+      "target_width": 0.02,
+      "target_liquidity": 75,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "M",
+      "target_width": 0.02,
+      "target_liquidity": 65,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "N",
+      "target_width": 0.03,
+      "target_liquidity": 55,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "Q",
+      "target_width": 0.03,
+      "target_liquidity": 45,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "U",
+      "target_width": 0.04,
+      "target_liquidity": 35,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "V",
+      "target_width": 0.04,
+      "target_liquidity": 25,
+      "tick_size": 0.01
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+import public "protos/competitor.proto";
+
+package protos;
+
+message Order {
+  enum OrderType {
+    ORDER_MKT = 1;
+    ORDER_LMT = 2;
+  }
+  optional string asset_code = 1; // asset that this order is trading
+  optional int32 quantity = 2; // original order quantity
+  optional OrderType order_type = 3; // order type
+  optional float price = 4; // order price
+  optional CompetitorIdentifier competitor_identifier = 5; // the competitor
+  optional int32 remaining_quantity = 6; // quantity that remains to be filled
+  optional string order_id = 7; // a ULID that uniquely identifies this order
+}
+
+message Fill {
+  optional Order order = 1; // the order that was filled
+  optional CompetitorIdentifier trader = 2;
+  optional int32 filled_quantity = 3;
+  optional int32 remaining_quantity = 4;
+  optional float fill_price = 5;
+}

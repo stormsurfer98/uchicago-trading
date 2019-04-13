@@ -1,0 +1,101 @@
+syntax = "proto2";
+
+import public "protos/order_book.proto";
+import public "protos/competitor.proto";
+import public "protos/exchange.proto";
+
+package protos;
+
+/*
+ * protos for the exchange server
+*/
+
+message RegisterCompetitorRequest {
+  // message for a RegisterCompetitorRPC
+  optional CompetitorIdentifier competitor_identifier = 1;
+}
+
+message RegisterCompetitorResponse {
+  enum StatusCode {
+    STATUS_OK = 1;
+    STATUS_ERROR = 2;
+  }
+  optional StatusCode status = 1;
+  optional string status_message = 2;
+}
+
+message GetCompetitorMetadataRequest {
+  optional CompetitorIdentifier competitor_identifier = 1;
+}
+
+message GetCompetitorMetadataResponse {
+  optional CompetitorMetadata competitor_metadata = 1;
+}
+
+message PlaceOrderRequest {
+  optional CompetitorIdentifier competitor_identifier = 1;
+  optional Order order = 2;
+}
+
+message PlaceOrderResponse {
+  optional string order_id = 1; // order id is a ULID
+  repeated Fill fills = 2; // any fills for this order (used by discrete data server)
+}
+
+message ModifyOrderRequest {
+  optional CompetitorIdentifier competitor_identifier = 1;
+  optional string order_id = 2; // order id is a ULID, returned by PlaceORderRPC
+  optional Order new_order = 3;
+}
+
+message ModifyOrderResponse {
+  optional string order_id = 1; // order id is a ULID
+  optional bool success = 2; // whether or not the order was succesfully modified
+}
+
+message CancelOrderRequest {
+  optional CompetitorIdentifier competitor_identifier = 1;
+  required string order_id = 2; // order id is a ULID, returned by PlaceORderRPC
+}
+
+message CancelOrderResponse {
+  required bool success = 1; // did we successfully cancel?    
+}
+
+message GetExchangeUpdateRequest {
+  optional CompetitorIdentifier competitor_identifier = 1;
+}
+
+message GetExchangeUpdateResponse {
+  repeated Fill fills = 1;
+  repeated MarketUpdate market_updates = 2;
+  optional CompetitorMetadata competitor_metadata = 3;
+}
+
+/* 
+ *  service definitions
+ */
+
+service ExchangeService {
+  rpc RegisterCompetitor(RegisterCompetitorRequest) returns (RegisterCompetitorResponse) {
+    // rpc for registering a competitor
+  }
+
+  rpc GetCompetitorMetadata(GetCompetitorMetadataRequest) returns (GetCompetitorMetadataResponse) {
+    //  rpc for getting competitor metadata
+  }
+
+  rpc PlaceOrder(PlaceOrderRequest) returns (PlaceOrderResponse) {
+    // rpc for placing an order
+  }
+
+  rpc ModifyOrder(ModifyOrderRequest) returns (ModifyOrderResponse) {
+    // rpc for modifying an order
+  }
+
+  rpc CancelOrder(CancelOrderRequest) returns (CancelOrderResponse) {
+    // rpc for cancelling an order
+  }
+
+  rpc GetExchangeUpdate(GetExchangeUpdateRequest) returns (stream GetExchangeUpdateResponse) {}
+}

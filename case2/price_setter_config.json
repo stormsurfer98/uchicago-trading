@@ -1,0 +1,70 @@
+{
+  "assets": [
+    {
+      "asset_code": "C98PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "C99PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "C100PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "C101PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "C102PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "P98PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "P99PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "P100PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "P101PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "P102PHX",
+      "target_width": 0.20,
+      "target_liquidity": 5,
+      "tick_size": 0.01
+    },
+    {
+      "asset_code": "IDX#PHX",
+      "target_width": 0.01,
+      "target_liquidity": 500,
+      "tick_size": 0.01
+    }
+  ]
+}

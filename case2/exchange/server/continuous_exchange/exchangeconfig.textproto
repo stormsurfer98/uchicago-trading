@@ -1,0 +1,57 @@
+assets: {
+  asset_code: "C98PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "C99PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "C100PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "C101PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "C102PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "P98PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "P99PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "P100PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "P101PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "P102PHX"
+  min_tick_size: 0.01;
+  max_position: 500;
+}
+assets: {
+  asset_code: "IDX#PHX"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+total_exposure_limit: 5000;
+block_orders_on_risk_violations: false;

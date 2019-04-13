@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package protos;
+
+// provides a competitor id and a private auth key
+message CompetitorIdentifier {
+  // uid for the competitor
+  optional string competitor_id = 1;
+
+  // private competitor-chosen key for auth
+  optional string competitor_private_key = 2;
+}
+
+// provides metadata for a competitor
+message CompetitorMetadata {
+  optional CompetitorIdentifier competitor_identifier = 1;
+  required double pnl = 2;
+  required double fines = 3; 
+  required double commissions = 4; 
+}

@@ -1,0 +1,29 @@
+syntax = "proto2";
+
+package protos;
+
+message Asset {
+  optional string asset_code = 1;
+  optional float min_tick_size = 2;
+  optional int32 max_position = 3;
+}
+
+message ExchangeConfig {
+  repeated Asset assets = 1;
+  optional int32 total_exposure_limit = 2; // the total exposure allowed - defined as abs(sum(all contract exposures))
+  optional bool block_orders_on_risk_violations = 3 [default = false]; // if true, blocks all further orders from a client that exceeds risk limits
+}
+
+message MarketUpdateLevel {
+  optional float price = 1;
+  optional int32 size = 2;
+}
+
+message MarketUpdate {
+  optional Asset asset = 1;
+  optional float mid_market_price = 2;
+  repeated MarketUpdateLevel bids = 3;
+  repeated MarketUpdateLevel asks = 4;
+  optional float bid = 5;
+  optional float ask = 6;
+}

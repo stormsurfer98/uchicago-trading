@@ -1,0 +1,32 @@
+assets: {
+  asset_code: "K"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+assets: {
+  asset_code: "M"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+assets: {
+  asset_code: "N"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+assets: {
+  asset_code: "Q"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+assets: {
+  asset_code: "U"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+assets: {
+  asset_code: "V"
+  min_tick_size: 0.01;
+  max_position: 1000;
+}
+total_exposure_limit: 5000;
+block_orders_on_risk_violations: false;

@@ -1,0 +1,10 @@
+syntax = "proto2";
+
+import public "protos/competitor.proto";
+
+package protos;
+
+
+message WebsocketMessage {
+    repeated MarketUpdate market_updates;
+}
